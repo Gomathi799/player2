@@ -1,0 +1,42 @@
+#include<stdio.h>
+void main()
+{
+    int n,a[10000],l=0,m=1,i,j,k=0,b[1000],t;
+    scanf("%d%d",&n,&k);
+    for(i=0;i<n;i++)
+    scanf("%d",&a[i]);
+    for(i=0;i<n;i++)
+    {
+        m=1;
+        for(j=i+1;j<n;j++)
+        {
+            if(a[i]==a[j])
+            {
+                m++;
+                a[j]='$';
+            }
+        }
+        if(m<k)
+        {
+            if(a[i]!='$')
+            {
+                b[l]=a[i];
+                l++;
+            }
+        }
+    }
+    for(i=0;i<l;i++)
+    {
+        for(j=i+1;j<l;j++)
+        {
+            if(b[i]>b[j])
+            {
+                t=b[j];
+                b[j]=b[i];
+                b[i]=t;
+            }
+        }
+    }
+    for(i=0;i<n;i++)
+    printf("%d ",b[i]);
+}
